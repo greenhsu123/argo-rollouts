@@ -174,11 +174,14 @@ func (c *Controller) recordAnalysisRunCompletionEvent(run *v1alpha1.AnalysisRun)
 // terminating (e.g. due to manual termination or failing metric), will not schedule further
 // measurements other than to resume any in-flight measurements.
 func generateMetricTasks(run *v1alpha1.AnalysisRun, metrics []v1alpha1.Metric) []metricTask {
+	log.Infof("[Sarah] GenerateMetricTasks.")
 	logger := logutil.WithAnalysisRun(run)
 	var tasks []metricTask
 	terminating := analysisutil.IsTerminating(run)
 
 	for i, metric := range metrics {
+		log.Infof("Metric %s:", metric)
+		generateMetricTasks
 		if analysisutil.MetricCompleted(run, metric.Name) {
 			continue
 		}
