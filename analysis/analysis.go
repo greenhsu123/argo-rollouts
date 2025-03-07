@@ -180,7 +180,7 @@ func generateMetricTasks(run *v1alpha1.AnalysisRun, metrics []v1alpha1.Metric) [
 	terminating := analysisutil.IsTerminating(run)
 
 	for i, metric := range metrics {
-		generateMetricTasks
+		log.Infof("Metric is '%s'", metric)
 		if analysisutil.MetricCompleted(run, metric.Name) {
 			continue
 		}
